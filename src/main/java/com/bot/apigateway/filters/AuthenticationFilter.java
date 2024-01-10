@@ -24,15 +24,13 @@ import java.util.Objects;
 @Component
 @jakarta.servlet.annotation.WebFilter(urlPatterns = "/*")
 public class AuthenticationFilter implements WebFilter {
-    public static class Config {
-    }
-
     @Autowired
     private RouteValidator routeValidator;
     private final static Logger LOGGER = LoggerFactory.getLogger(AuthenticationFilter.class);
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+        LOGGER.info("[API REQUEST]: " + exchange.getRequest().getURI().getPath());
         if (HttpMethod.OPTIONS.matches(String.valueOf(exchange.getRequest().getMethod()))) {
             return chain.filter(exchange); // Skip authentication for OPTIONS requests
         }
