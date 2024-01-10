@@ -1,0 +1,31 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: apigateway-service
+  cloud:
+    kubernetes:
+      enabled: true
+    loadbalancer:
+      mode: SERVICE
+    discovery:
+      all-namespaces: true
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: hiringbel-service
+          uri: lb://hiringbel-service
+          predicates:
+            - Path=/hb/api/*
+
+  profiles:
+    active: ${profile:prod}
