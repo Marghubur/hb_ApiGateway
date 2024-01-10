@@ -1,4 +1,4 @@
-package com.bot.HiringBelApiGateway.controller;
+package com.bot.apigateway.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
