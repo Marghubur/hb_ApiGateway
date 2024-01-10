@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/gateway/")
+@RequestMapping(value = "/hb/api/gateway/")
 public class test {
-    @GetMapping("get")
+    @GetMapping("test")
     public String get(){
         return  "Successfully";
     }
