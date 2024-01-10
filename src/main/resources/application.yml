@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: apigateway-service
+    name: apigateway-hiringbell-service
   cloud:
     kubernetes:
       enabled: true
@@ -22,10 +22,12 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: hiringbel-service
-          uri: lb://hiringbel-service
+        - id: coreservice-service
+          uri: lb://coreservice-service
           predicates:
             - Path=/hb/api/**
+          filters:
+            - AuthenticationFilter
 
   profiles:
     active: ${profile:prod}
