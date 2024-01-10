@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bot.HiringBelApiGateway</groupId>
-	<artifactId>HiringBelApiGateway</artifactId>
+	<artifactId>hb_ApiGateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HiringBelApiGateway</name>
+	<name>hb_ApiGateway</name>
 	<description>Hiringbel ApiGateway</description>
 	<properties>
 		<java.version>17</java.version>
