@@ -2,8 +2,9 @@ env:
   folder: development-environment
 
 spring:
-  config:
-    import: optional:configserver:http://localhost:8083
+  cloud:
+    config:
+      enabled: false
 
   datasource:
     driver: com.mysql.cj.jdbc.Driver
