@@ -28,6 +28,14 @@ spring:
             - Path=/hb/api/**
           filters:
             - AuthenticationFilter
+        - id: coreservice-service
+          uri: lb://coreservice-service
+          predicates:
+            - Path=/resources/**
+          filters:
+            - AuthenticationFilter
 
   profiles:
     active: ${profile:prod}
+  webflux:
+    static-path-pattern: "/resources/**"

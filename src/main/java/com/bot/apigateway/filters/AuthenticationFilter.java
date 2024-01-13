@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 
 import javax.crypto.SecretKey;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
@@ -37,6 +38,10 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
             LOGGER.info("[API REQUEST]: " + exchange.getRequest().getURI().getPath());
             if (HttpMethod.OPTIONS.matches(String.valueOf(exchange.getRequest().getMethod()))) {
                 return chain.filter(exchange); // Skip authentication for OPTIONS requests
+            }
+
+            if (exchange.getRequest().getURI().getPath().startsWith("/resources/")) {
+                return chain.filter(exchange);
             }
 
             ServerWebExchange modifiedExchange = exchange;
