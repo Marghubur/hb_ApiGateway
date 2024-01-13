@@ -1,6 +1,8 @@
 package com.bot.apigateway.filters;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,22 +57,22 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
                     SecretKey key = Keys.hmacShaKeyFor(keyBytes);
 
-//                Claims claims = Jwts.parser()
-//                        .setSigningKey(key)
-//                        .parseClaimsJws(authorizationHeader)
-//                        .getBody();
-//
-//                String sid = claims.get("sid", String.class);
-//                String user = claims.get("JBot", String.class);
-//                String companyCode = claims.get("CompanyCode", String.class);
-//
-//                modifiedExchange = exchange.mutate()
-//                        .request(exchange.getRequest().mutate()
-//                                .headers(httpHeaders -> httpHeaders.add("userDetail", user))
-//                                .headers(httpHeaders -> httpHeaders.add("sid", sid))
-//                                .headers(httpHeaders -> httpHeaders.add("companyCode", companyCode))
-//                                .build())
-//                        .build();
+                Claims claims = Jwts.parser()
+                        .setSigningKey(key)
+                        .parseClaimsJws(authorizationHeader)
+                        .getBody();
+
+                String sid = claims.get("sid", String.class);
+                String user = claims.get("JBot", String.class);
+                String companyCode = claims.get("CompanyCode", String.class);
+
+                modifiedExchange = exchange.mutate()
+                        .request(exchange.getRequest().mutate()
+                                .headers(httpHeaders -> httpHeaders.add("userDetail", user))
+                                .headers(httpHeaders -> httpHeaders.add("sid", sid))
+                                .headers(httpHeaders -> httpHeaders.add("companyCode", companyCode))
+                                .build())
+                        .build();
 
                 } catch (ExpiredJwtException e) {
                     throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Your session got expired");
