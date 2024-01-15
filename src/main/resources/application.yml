@@ -25,13 +25,19 @@ spring:
         - id: coreservice-service
           uri: lb://coreservice-service
           predicates:
-            - Path=/hb/api/**
+            - Path=/hb/api/core/**
           filters:
             - AuthenticationFilter
         - id: coreservice-service
           uri: lb://coreservice-service
           predicates:
             - Path=/resources/**
+          filters:
+            - AuthenticationFilter
+        - id: authenticator-service
+          uri: lb://authenticator-service
+          predicates:
+            - Path=/hb/api/oauth/**
           filters:
             - AuthenticationFilter
 
