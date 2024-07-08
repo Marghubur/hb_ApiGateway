@@ -40,6 +40,13 @@ spring:
             - Path=/hb/api/oauth/**
           filters:
             - AuthenticationFilter
+        - id: btchatstream-service
+          uri: lb://btchatstream-service
+          predicates:
+            - Path=/hb/api/chat/**
+#          filters:
+#            - RewritePath=/chat, /chat
+            # - RewritePath=/chat/(?<segment>.*), /${segment}
 
   profiles:
     active: ${profile:prod}
@@ -52,3 +59,16 @@ spring:
       file-size-threshold: 2MB
       max-file-size: 10MB
       max-request-size: 12MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
