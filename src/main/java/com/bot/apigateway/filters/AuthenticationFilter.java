@@ -46,7 +46,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
             ServerWebExchange modifiedExchange = exchange;
             if (routeValidator.isSecured.test(exchange.getRequest())) {
-                // check Authorizatrion header -- ServerWebExchange
+                // check Authorization header -- ServerWebExchange
                 LOGGER.info("[URL REQUESTED]: " + exchange.getRequest().getURI().getPath());
                 if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
                     throw new RuntimeException("Unauthorization access. Token is missing.");
