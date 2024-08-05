@@ -46,7 +46,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
             ServerWebExchange modifiedExchange = exchange;
             if (routeValidator.isSecured.test(exchange.getRequest())) {
-                // check Authorizatrion header -- ServerWebExchange
+                // check Authorization header -- ServerWebExchange
                 LOGGER.info("[URL REQUESTED]: " + exchange.getRequest().getURI().getPath());
                 if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
                     throw new RuntimeException("Unauthorization access. Token is missing.");
@@ -58,7 +58,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 }
 
                 try {
-                    String secret = "bottomhalfx12#@-common-service-for-token-gen-server-ems-x#20$46@3211";
+                    String secret = "bottomhalfx12#@-generic-service-x#20$46@3213";
                     byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
                     SecretKey key = Keys.hmacShaKeyFor(keyBytes);
 
