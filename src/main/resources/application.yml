@@ -1,12 +1,6 @@
 server:
   port: 8090
 
-  netty:
-    max-initial-line-length: 8192   # Default is 4096
-    max-header-size: 16KB           # Default is 8KB
-    max-chunk-size: 10MB            # Increase to handle larger chunks
-    max-content-length: 10MB        # Total size of the request body
-
 spring:
   application:
     name: apigateway-hiringbell-service
@@ -65,9 +59,6 @@ spring:
       file-size-threshold: 2MB
       max-file-size: 10MB
       max-request-size: 10MB
-
-  codec:
-    max-in-memory-size: 10MB  # Increase to handle larger payloads
 
 management:
   endpoints:
