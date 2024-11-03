@@ -37,7 +37,7 @@ spring:
         - id: authenticator-service
           uri: lb://authenticator-service
           predicates:
-            - Path=/hb/api/oauth/**
+            - Path=/hb/api/oauth/**, /hb/api/auto/**
           filters:
             - AuthenticationFilter
         - id: btchatstream-service
