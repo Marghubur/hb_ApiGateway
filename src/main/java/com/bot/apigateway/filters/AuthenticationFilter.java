@@ -1,8 +1,6 @@
 package com.bot.apigateway.filters;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +56,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 }
 
                 try {
-                    String secret = "bottomhalfx12#@-generic-service-x#20$46@3213";
+                    String secret = "bottomhalfx12#@-hiringbell-api-service-x#20$46@3212";
                     byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
                     SecretKey key = Keys.hmacShaKeyFor(keyBytes);
 
