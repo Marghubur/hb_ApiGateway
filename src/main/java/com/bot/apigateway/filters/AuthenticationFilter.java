@@ -56,7 +56,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 }
 
                 try {
-                    String secret = "bottomhalfx12#@-hiringbell-api-service-x#20$46@3212";
+                    String secret = "bottomhalfx12#@-emstum-api-servic-x#20$46@3211";
                     byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
                     SecretKey key = Keys.hmacShaKeyFor(keyBytes);
 
