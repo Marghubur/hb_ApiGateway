@@ -80,7 +80,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 } catch (ExpiredJwtException e) {
                     throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Your session got expired");
                 } catch (Exception ex) {
-                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unauthorized access. Please try with valid token.");
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unauthorized access. Error: " + ex.getMessage());
                 }
             }
 
