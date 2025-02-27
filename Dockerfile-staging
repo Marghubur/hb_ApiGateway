@@ -10,7 +10,7 @@ RUN mvn package
 
 FROM openjdk:17-oracle
 WORKDIR /app
-EXPOSE 8090
+EXPOSE 8101
 
 COPY --from=MAVEN /build/target/hiringbel_apigateway.jar /app/
 
