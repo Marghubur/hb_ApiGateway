@@ -36,7 +36,7 @@ spring:
           filters:
             - AuthenticationFilter
         - id: authenticator-service
-          uri: lb://authenticator-service.hb.svc.cluster.local
+          uri: lb://authenticator-service
           predicates:
             - Path=/hb/api/oauth/**, /hb/api/auto/**
           filters:
