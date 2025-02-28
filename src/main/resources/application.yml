@@ -11,6 +11,7 @@ spring:
       mode: SERVICE
     discovery:
       all-namespaces: true
+      namespace: hb
     gateway:
       globalcors:
         corsConfigurations:
