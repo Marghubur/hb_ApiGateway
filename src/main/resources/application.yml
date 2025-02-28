@@ -23,25 +23,25 @@ spring:
           enabled: true
       routes:
         - id: coreservice-service
-          uri: lb://coreservice-service
+          uri: lb://coreservice-service.hb.svc.cluster.local
           predicates:
             - Path=/hb/api/core/**
           filters:
             - AuthenticationFilter
         - id: coreservice-service
-          uri: lb://coreservice-service
+          uri: lb://coreservice-service.hb.svc.cluster.local
           predicates:
             - Path=/resources/**
           filters:
             - AuthenticationFilter
         - id: authenticator-service
-          uri: lb://authenticator-service
+          uri: lb://authenticator-service.hb.svc.cluster.local
           predicates:
             - Path=/hb/api/oauth/**, /hb/api/auto/**
           filters:
             - AuthenticationFilter
         - id: btchatstream-service
-          uri: lb://btchatstream-service
+          uri: lb://btchatstream-service.hb.svc.cluster.local
           predicates:
             - Path=/hb/api/chat/**
 #          filters:
